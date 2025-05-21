@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: vets-service
 spec:
-  replicas: 1
+  replicas: {{.Values.vets-service.replicaCount}}
   selector:
     matchLabels:
       app: vets-service
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: vets-service
-          image: {{ index .Values.services "vets-service" "image" }}
+          image: {{.Values.vets-service.image.repository}}:{{.Values.vets-service.image.tag}}
           ports:
-            - containerPort: {{ index .Values.services "vets-service" "port" }}
+            - containerPort: {{.Values.vets-service.port}}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: vets-service
@@ -31,9 +31,9 @@ kind: Service
 metadata:
   name: vets-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: vets-service
   ports:
-    - port: {{ index .Values.services "vets-service" "port" }}
-      targetPort: {{ index .Values.services "vets-service" "port" }}
+    - port: {{.Values.vets-service.port}}
+      targetPort: {{.Values.vets-service.port}}
