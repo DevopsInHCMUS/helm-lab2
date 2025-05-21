@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api-gateway
 spec:
-  replicas: {{ .Values.api-gateway.replicaCount }}
+  replicas: {{ index .Values "api-gateway" "replicaCount" }}
   selector:
     matchLabels:
       app: api-gateway
@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: {{ .Values.api-gateway.image.repository }}:{{ .Values.api-gateway.image.tag }} 
+          image:  {{ index .Values "api-gateway" "image" "repository" }}:{{ index .Values "api-gateway" "image" "tag" }}
           ports:
-            - containerPort: {{ .Values.api-gateway.port }}
+            - containerPort: {{ index .Values "api-gateway" "port" }}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: api-gateway
             - name: CONFIG_SERVER_URL
-              value: config-server:{{ .Values.config-server.port }}
+              value: config-server:{{ index .Values "config-server" "port" }}
           resources:
             limits:
               memory: "512Mi"
@@ -35,5 +35,5 @@ spec:
   selector:
     app: api-gateway
   ports:
-  - port: {{ .Values.api-gateway.port }}
-    targetPort: {{ .Values.api-gateway.port }}
+    - port: {{ index .Values "api-gateway" "port" }}
+      targetPort: {{ index .Values "api-gateway" "port" }}
