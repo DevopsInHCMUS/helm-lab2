@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: visits-service
 spec:
-  replicas: {{.Values.visits-service.replicaCount}}
+  replicas: {{ index .Values "visits-service" "replicaCount" }}
   selector:
     matchLabels:
       app: visits-service
@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: visits-service
-          image: {{.Values.visits-service.image.repository}}:{{.Values.visits-service.image.tag}}
+          image: {{ index .Values "visits-service" "image" "repository" }}:{{ index .Values "visits-service" "image" "tag" }}
           ports:
-            - containerPort: {{.Values.visits-service.port}}
+            - containerPort: {{ index .Values "visits-service" "port" }}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: visits-service
             - name: CONFIG_SERVER_URL
-              value: config-server:{{.Values.config-server.port}}
+              value: config-server:{{ index .Values "config-server" "port" }}
           resources:
             limits:
               memory: "512Mi"
@@ -35,5 +35,5 @@ spec:
   selector:
     app: visits-service
   ports:
-    - port: {{.Values.visits-service.port}}
-      targetPort: {{.Values.visits-service.port}}
+    - port: {{ index .Values "visits-service" "port" }}
+      targetPort: {{ index .Values "visits-service" "port" }}
