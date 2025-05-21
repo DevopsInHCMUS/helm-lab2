@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: customers-service
 spec:
-  replicas: {{.Values.customers-service.replicaCount}}
+  replicas: {{ index .Values "customers-service" "replicaCount" }}
   selector:
     matchLabels:
       app: customers-service
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: customers-service
-          image: {{.Values.customers-service.image.repository}}:{{.Values.customers-service.image.tag}}
+          image: {{ index .Values "customers-service" "image" "repository" }}:{{ index .Values "customers-service" "image" "tag" }}
           ports:
-            - containerPort: {{.Values.customers-service.port }}
+            - containerPort: {{ index .Values "customers-service" "port" }}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: customers-service
@@ -33,5 +33,5 @@ spec:
   selector:
     app: customers-service
   ports:
-    - port: {{.Values.customers-service.port }}
-      targetPort: {{.Values.customers-service.port }}
+    - port: {{ index .Values "customers-service" "port" }}
+      targetPort: {{ index .Values "customers-service" "port" }}
