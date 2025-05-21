@@ -21,7 +21,7 @@ spec:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: discovery-server
             - name: CONFIG_SERVER_URL
-              value: config-server:{{.Values.config-server.port}}
+              value: config-server:{{ index .Values "config-server" "port" }}
           resources:
             limits:
               memory: "512Mi"
