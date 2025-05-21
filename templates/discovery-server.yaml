@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: discovery-server
 spec:
-  replicas: {{.Values.discovery-server.replicaCount}}
+  replicas: {{ index .Values "discovery-server" "replicaCount" }}
   selector:
     matchLabels:
       app: discovery-server
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: discovery-server
-          image: {{.Values.discovery-server.image.repository}}:{{.Values.discovery-server.image.tag}}
+          image: {{ index .Values "discovery-server" "image" "repository" }}:{{ index .Values "discovery-server" "image" "tag" }}
           ports:
-            - containerPort: {{.Values.discovery-server.port}}
+            - containerPort: {{ index .Values "discovery-server" "port" }}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: discovery-server
@@ -35,5 +35,5 @@ spec:
   selector:
     app: discovery-server
   ports:
-    - port: {{.Values.discovery-server.port}}
-      targetPort: {{.Values.discovery-server.port}}
+    - port: {{ index .Values "discovery-server" "port" }}
+      targetPort: {{ index .Values "discovery-server" "port" }}
