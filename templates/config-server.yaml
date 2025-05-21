@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: config-server
 spec:
-  replicas: {{.Values.config-server.replicaCount}}
+  replicas: {{ index .Values "config-server" "replicaCount" }}
   selector:
     matchLabels:
       app: config-server
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: {{.Values.config-server.image.repository}}:{{.Values.config-server.image.tag}}
+          image: {{ index .Values "config-server" "image" "repository" }}:{{ index .Values "config-server" "image" "tag"}}
           ports:
             - containerPort:  {{ index .Values.services "config-server" "port" }}
           env:
