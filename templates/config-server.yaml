@@ -33,5 +33,5 @@ spec:
   selector:
     app: config-server
   ports:
-    - port: {{ index .Values.services "config-server" "port" }}
-      targetPort: {{ index .Values.services "config-server" "port" }}
+    - port: {{ index .Values "config-server" "port" }}
+      targetPort: {{ index .Values "config-server" "port" }}
