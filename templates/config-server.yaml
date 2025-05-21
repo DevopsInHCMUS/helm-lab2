@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: "{{.Values.config-server.image.repository}}:{{.Values.config-server.image.tag}}"
+          image: {{.Values.config-server.image.repository}}:{{.Values.config-server.image.tag}}
           ports:
             - containerPort:  {{ index .Values.services "config-server" "port" }}
           env:
