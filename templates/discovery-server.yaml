@@ -1,10 +1,9 @@
-{{- $svc := index .Values.services "discovery-server" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: discovery-server
 spec:
-  replicas: 1
+  replicas: {{.Values.discovery-server.replicaCount}}
   selector:
     matchLabels:
       app: discovery-server
@@ -15,14 +14,14 @@ spec:
     spec:
       containers:
         - name: discovery-server
-          image: "{{ $svc.image }}"
+          image: {{.Values.discovery-server.image.repository}}:{{.Values.discovery-server.image.tag}}
           ports:
-            - containerPort: {{ $svc.port }}
+            - containerPort: {{.Values.discovery-server.port}}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: discovery-server
             - name: CONFIG_SERVER_URL
-              value: config-server:8888
+              value: config-server:{{.Values.config-server.port}}
           resources:
             limits:
               memory: "512Mi"
@@ -32,9 +31,9 @@ kind: Service
 metadata:
   name: discovery-server
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: discovery-server
   ports:
-    - port: {{ $svc.port }}
-      targetPort: {{ $svc.port }}
+    - port: {{.Values.discovery-server.port}}
+      targetPort: {{.Values.discovery-server.port}}
