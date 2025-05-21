@@ -1,3 +1,5 @@
 services:
   spring-petclinic-customers-service:
     tag: "3433075"
+  spring-petclinic-visits-service:
+    tag: 1b866fb
