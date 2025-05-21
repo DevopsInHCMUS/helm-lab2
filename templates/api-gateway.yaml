@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: "{{ .Values.api-gateway.image.repository }}:{{ .Values.api-gateway.image.tag }}" 
+          image: {{ .Values.api-gateway.image.repository }}:{{ .Values.api-gateway.image.tag }} 
           ports:
-            - containerPort: 8080
+            - containerPort: {{ .Values.api-gateway.port }}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: api-gateway
             - name: CONFIG_SERVER_URL
-              value: config-server:8888
+              value: config-server:{{ .Values.config-server.port }}
           resources:
             limits:
               memory: "512Mi"
@@ -35,5 +35,5 @@ spec:
   selector:
     app: api-gateway
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: {{ .Values.api-gateway.port }}
+    targetPort: {{ .Values.api-gateway.port }}
