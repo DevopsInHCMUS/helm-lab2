@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: customers-service
 spec:
-  replicas: 1
+  replicas: {{.Values.customers-service.replicaCount}}
   selector:
     matchLabels:
       app: customers-service
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: customers-service
-          image: {{ index .Values.services "customers-service" "image" }}
+          image: {{.Values.customers-service.image.repository}}:{{.Values.customers-service.image.tag}}
           ports:
-            - containerPort: {{ index .Values.services "customers-service" "port" }}
+            - containerPort: {{.Values.customers-service.port }}
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: customers-service
@@ -29,9 +29,9 @@ kind: Service
 metadata:
   name: customers-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: customers-service
   ports:
-    - port: {{ index .Values.services "customers-service" "port" }}
-      targetPort: {{ index .Values.services "customers-service" "port" }}
+    - port: {{.Values.customers-service.port }}
+      targetPort: {{.Values.customers-service.port }}
