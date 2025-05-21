@@ -38,9 +38,9 @@ customers-service:
   replicaCount: 1
   port: 8081
 
-visits-server:
+visits-service:
   image:
-    repository: phuong273/visits-server
+    repository: phuong273/visits-service
     tag: "latest"
     pullPolicy: IfNotPresent
   replicaCount: 1
