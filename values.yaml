@@ -4,6 +4,7 @@ api-gateway:
     tag: "latest"
     pullPolicy: IfNotPresent
   replicaCount: 1
+  port: 8080
 
 config-server:
   image:
@@ -11,6 +12,7 @@ config-server:
     tag: "latest"
     pullPolicy: IfNotPresent
   replicaCount: 1
+  port: 8888
 
 discovery-server:
   image:
@@ -18,6 +20,7 @@ discovery-server:
     tag: "latest"
     pullPolicy: IfNotPresent
   replicaCount: 1
+  port: 8761
 
 vets-service:
   image:
@@ -25,6 +28,7 @@ vets-service:
     tag: "latest"
     pullPolicy: IfNotPresent
   replicaCount: 1
+  port: 8083
 
 customers-service:
   image:
@@ -32,9 +36,14 @@ customers-service:
     tag: "latest"
     pullPolicy: IfNotPresent
   replicaCount: 1
+  port: 8081
 
 visits-server:
   image:
     repository: phuong273/visits-server
     tag: "latest"
     pullPolicy: IfNotPresent
+  replicaCount: 1
+  port: 8082
+
+    
