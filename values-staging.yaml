@@ -1,0 +1,3 @@
+services:
+  customers-service:
+    tag: v1.0.3
