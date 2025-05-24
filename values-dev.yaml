@@ -3,3 +3,5 @@ services:
     tag: "bad7a56"
   spring-petclinic-visits-service:
     tag: 1b866fb
+  customers-service:
+    tag: e6712ea
