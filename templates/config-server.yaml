@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: "{{ index .Values.services \"config-server\" \"image\" }}:{{ index .Values.services \"config-server\" \"tag\" }}"
+          image: "{{ index .Values.services "config-server" "image" }}:{{ index .Values.services "config-server" "tag" }}"
           ports:
             - containerPort: {{ index .Values.services "config-server" "port" }}
           env:
