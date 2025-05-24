@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: customers-service
-          image: {{ index .Values.services "customers-service" "image" }}
+          image: "{{ index .Values.services \"customers-service\" \"image\" }}:{{ index .Values.services \"customers-service\" \"tag\" }}"
           ports:
             - containerPort: {{ index .Values.services "customers-service" "port" }}
           env:

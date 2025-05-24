@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: admin-server
-          image: {{ index .Values.services "admin-server" "image" }}
+          image: "{{ index .Values.services \"admin-server\" \"image\" }}:{{ index .Values.services \"admin-server\" \"tag\" }}"
           ports:
             - containerPort: {{ index .Values.services "admin-server" "port" }}
           env:

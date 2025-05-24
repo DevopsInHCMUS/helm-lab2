@@ -4,28 +4,35 @@ global:
 services:
   config-server:
     image: trgtamthanh/spring-petclinic-config-server
+    tag: latest
     port: 8888
 
   discovery-server:
     image: trgtamthanh/spring-petclinic-discovery-server
+    tag: latest
     port: 8761
 
   customers-service:
     image: trgtamthanh/spring-petclinic-customers-service
+    tag: latest
     port: 8081
 
   visits-service:
     image: trgtamthanh/spring-petclinic-visits-service
+    tag: latest
     port: 8082
 
   vets-service:
     image: trgtamthanh/spring-petclinic-vets-service
+    tag: latest
     port: 8083
 
   api-gateway:
     image: trgtamthanh/spring-petclinic-api-gateway
+    tag: latest
     port: 8080
 
   admin-server:
     image: trgtamthanh/spring-petclinic-admin-server
+    tag: latest
     port: 9090

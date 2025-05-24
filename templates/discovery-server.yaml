@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: discovery-server
-          image: "{{ $svc.image }}"
+          image: "{{ $svc.image }}:{{ $svc.tag }}"
           ports:
             - containerPort: {{ $svc.port }}
           env:

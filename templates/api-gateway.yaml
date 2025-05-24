@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: {{ index .Values.services "api-gateway" "image" }}
+          image: "{{ index .Values.services \"api-gateway\" \"image\" }}:{{ index .Values.services \"api-gateway\" \"tag\" }}"
           ports:
             - containerPort: {{ index .Values.services "api-gateway" "port" }}
           env:
