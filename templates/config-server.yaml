@@ -20,6 +20,8 @@ spec:
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: config-server
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              value: "http://tracing-server.monitoring.svc.cluster.local:9411/api/v2/spans"
           resources:
             limits:
               memory: "512Mi"
