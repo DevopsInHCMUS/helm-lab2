@@ -23,6 +23,8 @@ spec:
               value: vets-service
             - name: CONFIG_SERVER_URL
               value: config-server:8888
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              value: "http://tracing-server.monitoring.svc.cluster.local:9411/api/v2/spans"
           resources:
             limits:
               memory: "512Mi"
