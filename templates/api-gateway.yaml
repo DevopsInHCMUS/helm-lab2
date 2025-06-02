@@ -22,6 +22,8 @@ spec:
               value: api-gateway
             - name: CONFIG_SERVER_URL
               value: config-server:{{ index .Values "config-server" "port" }}
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              value: {{ index .Values "global" "zipkin" "endpoint" }}
           resources:
             limits:
               memory: "512Mi"

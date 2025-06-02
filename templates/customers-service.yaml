@@ -20,6 +20,8 @@ spec:
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: customers-service
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              value: {{ index .Values "global" "zipkin" "endpoint" }}  
           resources:
             limits:
               memory: "512Mi"

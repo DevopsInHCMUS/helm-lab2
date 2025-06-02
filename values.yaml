@@ -1,3 +1,10 @@
+global:
+  zipkin:
+    service-name: "tracing-server"
+    namespace: "monitoring"
+    port: 9411
+    endpoint: "http://{{ .Values.global.zipkin.service-name }}.{{ .Values.global.zipkin.namespace }}.svc.cluster.local:{{ .Values.global.zipkin.port }}/api/v2/spans"
+
 api-gateway:
   image:
     repository: phuong273/api-gateway
