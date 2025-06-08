@@ -3,7 +3,7 @@ global:
     service-name: "tracing-server"
     namespace: "monitoring"
     port: 9411
-    endpoint: "http://{{ .Values.global.zipkin.service-name }}.{{ .Values.global.zipkin.namespace }}.svc.cluster.local:{{ .Values.global.zipkin.port }}/api/v2/spans"
+    endpoint: "http://tracing-server.monitoring.svc.cluster.local:9411/api/v2/spans"
 
 api-gateway:
   image:
