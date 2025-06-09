@@ -43,3 +43,4 @@ spec:
   ports:
     - port: {{ index .Values "customers-service" "port" }}
       targetPort: {{ index .Values "customers-service" "port" }}
+{{- end }}
