@@ -30,6 +30,7 @@ discovery-server:
   port: 8761
 
 vets-service:
+  enabled: true
   image:
     repository: phuong273/vets-service
     tag: "latest"
@@ -38,6 +39,7 @@ vets-service:
   port: 8083
 
 customers-service:
+  enabled: true
   image:
     repository: phuong273/customers-service
     tag: "latest"
@@ -46,6 +48,7 @@ customers-service:
   port: 8081
 
 visits-service:
+  enabled: true
   image:
     repository: phuong273/visits-service
     tag: "latest"
