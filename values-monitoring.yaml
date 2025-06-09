@@ -1,0 +1,5 @@
+vets-service:
+  enabled: false
+
+visits-service:
+  enabled: false
